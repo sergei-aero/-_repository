@@ -25,5 +25,11 @@ def category_1():
     return Category(
     name="Смартфоны",
     description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
-    products=[product_1, product_2]
+    products=[{"name": "Samsung Galaxy S23 Ultra",
+    "description": "256GB, Серый цвет, 200MP камера",
+    "price": 180000.0,
+    "quantity": 5}, {"name": "Iphone 15",
+    "description": "512GB, Gray space",
+    "price": 210000.0,
+    "quantity": 8}]
 )
