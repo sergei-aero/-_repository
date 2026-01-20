@@ -1,12 +1,33 @@
-def test_task_init(product_1):
+def test_task_product_init(product_1):
     assert product_1.name == "Samsung Galaxy S23 Ultra"
     assert product_1.description == "256GB, Серый цвет, 200MP камера"
     assert product_1.price == 180000.0
     assert product_1.quantity == 5
 
 
-def test_task_init(category_1):
+def test_task_category_init(category_1):
     assert category_1.name == "Смартфоны"
     assert category_1.description =="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
     assert len(category_1.products) == 2
     assert category_1.category_count == 1
+
+
+def test_price_getter_returns_correct_value(product_1):
+    """Тест: геттер price возвращает установленное значение цены"""
+    # Проверяем, что геттер возвращает правильное значение
+    assert product_1.price == 180000.0
+
+
+def test_price_setter_sets_valid_price(product_1):
+    """Тест: сеттер устанавливает корректную положительную цену"""
+    product_1.price = 200000.0
+    assert product_1.price == 200000.0
+
+
+def test_price_setter_does_not_set_negative_price(product_1, capsys):
+    """Тест: сеттер не устанавливает отрицательную цену и выводит сообщение"""
+    original_price = product_1.price
+    product_1.price = -500.0
+    assert product_1.price == original_price
+    captured = capsys.readouterr()
+    assert "Цена не должна быть нулевая или отрицательная" in captured.out

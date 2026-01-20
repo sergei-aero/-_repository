@@ -2,7 +2,7 @@ class Product:
     """ Класс для представления продукта """
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
@@ -10,24 +10,60 @@ class Product:
             Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+    @property
+    def price(self):
+        """Геттер для получения цены продукта."""
+        return self.__price
+
+    @price.setter
+    def price(self, value):
+        """Сеттер для установки цены продукта с проверкой."""
+        if value <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        else:
+            self.__price = value
+
+    @classmethod
+    def new_product(cls, product_data):
+        """Класс-метод для создания продукта из словаря данных."""
+        return cls(
+            name=product_data["name"],
+            description=product_data["description"],
+            price=product_data["price"],
+            quantity=product_data["quantity"],
+        )
 
 
 class Category:
     """ Класс для представления категории продукта """
     name: str
     description: str
-    products: list
+    __products: list
     category_count = 0
     product_count = 0
 
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
+
+    def add_product(self, product):
+        """Метод для добавления товара в категорию."""
+        self.__products.append(product)
+        Category.product_count += 1
+
+    @property
+    def products(self):
+        """Геттер для получения строкового представления товаров категории."""
+        result = ""
+        for product in self.__products:
+            result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+        return result
 
 
 if __name__ == "__main__":
@@ -56,7 +92,6 @@ if __name__ == "__main__":
 
     print(category1.name == "Смартфоны")
     print(category1.description)
-    print(len(category1.products))
     print(category1.category_count)
     print(category1.product_count)
 
@@ -67,7 +102,6 @@ if __name__ == "__main__":
 
     print(category2.name)
     print(category2.description)
-    print(len(category2.products))
     print(category2.products)
 
     print(Category.category_count)
