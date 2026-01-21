@@ -60,7 +60,9 @@ class Category:
         Category.product_count += len(products) if products else 0
 
     def __str__(self):
-        return f'{self.name}, количество продуктов: {len(self.__products)} шт.'
+        # Суммируем количество всех товаров в категории
+        total_quantity = sum(product.quantity for product in self.__products)
+        return f'{self.name}, количество продуктов: {total_quantity} шт.'
 
     def add_product(self, product):
         """Метод для добавления товара в категорию."""
