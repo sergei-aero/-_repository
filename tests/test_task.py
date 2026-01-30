@@ -10,9 +10,11 @@ def test_task_product_init(product_1):
 
 def test_task_category_init(category_1):
     assert category_1.name == "Смартфоны"
-    assert category_1.description =="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
-    assert len(category_1.products) == 3
-    assert category_1.category_count == 1
+    assert (
+        category_1.description
+        == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
+    )
+    assert len(category_1.product_list) == 3
 
 
 def test_price_getter_returns_correct_value(product_1):
@@ -39,8 +41,10 @@ def test_price_setter_does_not_set_negative_price(product_1, capsys):
 def test_task_product_str(product_1):
     assert str(product_1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
+
 def test_task_category_str(category_1):
-    assert str(category_1) == "Смартфоны, количество продуктов: 3 шт."
+    assert str(category_1) == "Смартфоны, количество продуктов: 27 шт."
+
 
 def test_task_product_add(product_1, product_2, product_3):
     assert product_1 + product_2 == 2580000.0

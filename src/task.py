@@ -79,9 +79,6 @@ class Category:
             raise TypeError
 
     @property
-    def products(self):
-        """Геттер для получения строкового представления товаров категории."""
-        result = ""
-        for product in self.__products:
-            result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
-        return result
+    def product_list(self):
+        return self.__products.copy()
+

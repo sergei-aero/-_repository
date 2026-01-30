@@ -32,7 +32,7 @@ def product_3():
 
 
 @pytest.fixture()
-def category_1():
+def category_1(product_1, product_2, product_3):
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
