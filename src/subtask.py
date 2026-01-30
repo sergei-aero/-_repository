@@ -19,20 +19,7 @@ class LawnGrass(Product):
         self.germination_period = germination_period
         self.color = color
 
-    def __add__(self, other):
-        if type(other) is Smartphone or LawnGrass:
-            total_price = self.price * self.quantity + other.price * other.quantity
-            return total_price
-        raise TypeError
 
-    def add_product(self, product):
-        """Метод для добавления товара в категорию."""
-
-        if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
-        else:
-            raise TypeError
 
 
 if __name__ == '__main__':
@@ -47,4 +34,8 @@ if __name__ == '__main__':
 
     category_smartphones = Category("Смартфоны", "Высокотехнологичные смартфоны", [smartphone1, smartphone2])
     category_grass = Category("Газонная трава", "Различные виды газонной травы", [grass1, grass2])
+
+    category_smartphones = Category("Смартфоны", "Высокотехнологичные смартфоны", [smartphone1, smartphone2])
+    category_grass = Category("Газонная трава", "Различные виды газонной травы", [grass1, grass2])
+
 

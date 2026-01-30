@@ -1,22 +1,27 @@
 class Product:
-    """ Класс для представления продукта """
+    """Класс для представления продукта"""
+
     name: str
     description: str
     __price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
-        """ Метод для инициализации экземпляра класса.
-            Задаем значения атрибутам экземпляра."""
+        """Метод для инициализации экземпляра класса.
+        Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
 
     def __str__(self):
-        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
+        if not isinstance(other, Product):
+            raise TypeError("Можно складывать только товары")
+        if type(self) is not type(other):
+            raise TypeError("Нельзя складывать товары разных типов")
         total_price = self.price * self.quantity + other.price * other.quantity
         return total_price
 
@@ -45,7 +50,8 @@ class Product:
 
 
 class Category:
-    """ Класс для представления категории продукта """
+    """Класс для представления категории продукта"""
+
     name: str
     description: str
     __products: list
@@ -62,12 +68,15 @@ class Category:
     def __str__(self):
         # Суммируем количество всех товаров в категории
         total_quantity = sum(product.quantity for product in self.__products)
-        return f'{self.name}, количество продуктов: {total_quantity} шт.'
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def add_product(self, product):
         """Метод для добавления товара в категорию."""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
     def products(self):
