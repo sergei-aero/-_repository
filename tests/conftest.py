@@ -6,20 +6,14 @@ from src.subtask import Smartphone, LawnGrass
 @pytest.fixture()
 def product_1():
     return Product(
-    name="Samsung Galaxy S23 Ultra",
-    description="256GB, Серый цвет, 200MP камера",
-    price=180000.0,
-    quantity=5
-)
+        name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера", price=180000.0, quantity=5
+    )
+
 
 @pytest.fixture()
 def product_2():
-    return Product(
-    name="Iphone 15",
-    description="512GB, Gray space",
-    price=210000.0,
-    quantity=8
-)
+    return Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
+
 
 @pytest.fixture()
 def product_3():
@@ -35,9 +29,11 @@ def product_3():
 def category_1(product_1, product_2, product_3):
     return Category(
         name="Смартфоны",
-        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        description="Смартфоны, как средство не только коммуникации, но и получения"
+        "дополнительных функций для удобства жизни",
         products=[product_1, product_2, product_3],
     )
+
 
 @pytest.fixture()
 def smartphone1():
@@ -49,7 +45,9 @@ def smartphone1():
         efficiency=95.5,
         model="S23 Ultra",
         memory=256,
-        color="Серый")
+        color="Серый",
+    )
+
 
 @pytest.fixture()
 def smartphone2():
@@ -61,7 +59,9 @@ def smartphone2():
         efficiency=98.2,
         model="15",
         memory=512,
-        color="Gray space")
+        color="Gray space",
+    )
+
 
 @pytest.fixture()
 def smartphone3():
@@ -73,11 +73,14 @@ def smartphone3():
         efficiency=90.3,
         model="Note 11",
         memory=1024,
-        color="Синий")
+        color="Синий",
+    )
+
 
 @pytest.fixture()
 def grass1():
     return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
 
 @pytest.fixture()
 def grass2():

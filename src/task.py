@@ -7,7 +7,7 @@ class Product:
     quantity: int
 
     def __init__(self, name, description, price, quantity):
-        """Метод для инициализации экземпляра класса.
+        """Метод для инициализации экземпляра класса - Product.
         Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
@@ -81,4 +81,3 @@ class Category:
     @property
     def product_list(self):
         return self.__products.copy()
-
