@@ -1,6 +1,3 @@
-from tests.conftest import product_1, product_2, product_3, category_1
-
-
 def test_product_init(product_1):
     assert product_1.name == "Samsung Galaxy S23 Ultra"
     assert product_1.description == "256GB, Серый цвет, 200MP камера"
