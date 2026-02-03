@@ -1,6 +1,6 @@
 import pytest
-from src.task import Product, Category
-from src.subtask import Smartphone, LawnGrass
+from src.product_and_category import Product, Category
+from src.sub_product import Smartphone, LawnGrass
 
 
 @pytest.fixture()

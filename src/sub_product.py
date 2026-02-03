@@ -1,4 +1,4 @@
-from src.task import Product
+from src.product_and_category import Product
 
 
 class Smartphone(Product):

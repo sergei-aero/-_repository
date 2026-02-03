@@ -22,10 +22,10 @@ def test_lawngrass_init(grass1):
     assert grass1.color == "Зеленый"
 
 
-def test_subproduct_add(smartphone1, smartphone2):
+def test_sub_product_add(smartphone1, smartphone2):
     assert smartphone1 + smartphone2 == 2580000.0
 
 
-def test_subproduct_add_error(smartphone1, smartphone2):
+def test_sub_product_add_error(smartphone1, smartphone2):
     with pytest.raises(TypeError):
         assert smartphone1 + 1
