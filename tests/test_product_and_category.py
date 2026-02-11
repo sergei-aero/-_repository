@@ -48,3 +48,26 @@ def test_product_add(product_1, product_2, product_3):
     assert product_1 + product_2 == 2580000.0
     assert product_1 + product_3 == 1334000.0
     assert product_2 + product_3 == 2114000.0
+
+
+def test_average_price_empty_category_returns_zero(category_empty):
+    """
+    Тест проверяет, что метод average_price для пустой категории
+    возвращает 0 и не вызывает исключений
+    """
+    # Вызываем метод average_price для пустой категории
+    result = category_empty.average_price()
+
+    # Проверяем, что результат равен 0
+    assert result == 0
+
+
+def test_average_price_with_products(category_2):
+    """
+    Тест проверяет, что метод average_price корректно работает
+    для категории с товарами
+    """
+
+    result = category_2.average_price()
+
+    assert result == 195000.0

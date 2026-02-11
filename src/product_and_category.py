@@ -13,6 +13,10 @@ class Product(PrintMixin, BaseProduct):
     def __init__(self, name, description, price, quantity):
         """Метод для инициализации экземпляра класса - Product.
         Задаем значения атрибутам экземпляра."""
+
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.name = name
         self.description = description
         self.__price = price
@@ -86,3 +90,11 @@ class Category:
     @property
     def product_list(self):
         return self.__products.copy()
+
+    def average_price(self):
+        """Метод для подсчета среднего ценника всех товаров в категории."""
+        try:
+            total_price = sum(product.price for product in self.__products)
+            return total_price / len(self.__products)
+        except ZeroDivisionError:
+            return 0

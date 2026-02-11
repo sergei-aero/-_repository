@@ -31,12 +31,27 @@ def product_3():
 
 
 @pytest.fixture()
+def product_invalid():
+    return Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+
+
+@pytest.fixture()
 def category_1(product_1, product_2, product_3):
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, но и получения"
         "дополнительных функций для удобства жизни",
         products=[product_1, product_2, product_3],
+    )
+
+
+@pytest.fixture()
+def category_2(product_1, product_2):
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, но и получения"
+        "дополнительных функций для удобства жизни",
+        products=[product_1, product_2],
     )
 
 
@@ -106,3 +121,8 @@ def grass2():
         "5 дней",
         "Темно-зеленый",
     )
+
+
+@pytest.fixture()
+def category_empty():
+    return Category("Пустая категория", "Категория без продуктов", [])
